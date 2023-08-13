@@ -50,6 +50,9 @@ async def start_sync(message, path, destination, listener):
     cmd = ["rclone", "sync", "--delete-during", "-P", f'--config={path}', f"{SOURCE}:", f"{destination}:"] 
     if config_dict["SERVER_SIDE"]:
         cmd.append("--server-side-across-configs")
+        cmd.append("--tpslimit 3"
+        cmd.append("--transfers 10")
+        cmd.append("--opendrive-chunk-size 32M")
 
     process = await exec(*cmd, stdout=PIPE, stderr=PIPE)
     
