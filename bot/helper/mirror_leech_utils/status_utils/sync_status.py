@@ -20,7 +20,7 @@ class SyncStatus:
         blank= 0
         while True:
             data = await self.__process.stdout.readline()
-            match = findall('Transferred:.*ETA.*', data.decode().strip())
+            match = findall('Transferred:.*ETA.*', data.decode('utf-8').strip())
             if len(match) > 0:
                 nstr = match[0].replace('Transferred:', '')
                 self.info = nstr.strip().split(',')
