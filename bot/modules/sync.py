@@ -47,7 +47,7 @@ async def sync_callback(client, query):
         await message.delete()
 
 async def start_sync(message, path, destination, listener):
-    cmd = ["rclone", "sync", "--delete-during", "--opendrive-chunk-size=64M", "-P", f'--config={path}', f"{SOURCE}:", f"{destination}:"] 
+    cmd = ["rclone", "sync", "--delete-during", "--opendrive-chunk-size=32M", "-P", f'--config={path}', f"{SOURCE}:", f"{destination}:"] 
     #if config_dict["SERVER_SIDE"]:
         #cmd.append("--server-side-across-configs")
         #cmd.append("--tpslimit=3")
